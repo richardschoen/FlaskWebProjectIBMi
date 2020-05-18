@@ -60,3 +60,13 @@ cd /gitrepos/FlaskWebProjectIBMi/FlaskWebProjectIBMi
 
 python3 runserver.py
 ```
+
+If any Python packages are missing, use pip3 to install them.
+```
+pip3 install pyodbc
+
+pip3 install flask
+
+pip3 install pysqlite3
+```
+
