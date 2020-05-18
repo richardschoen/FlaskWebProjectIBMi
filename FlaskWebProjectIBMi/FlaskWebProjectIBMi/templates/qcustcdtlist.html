@@ -1,0 +1,53 @@
+{% extends "layout.html" %} <!-- Bootstrap form design -->
+{% block content %}
+
+<div class="container-fluid">
+    <h2 class="mt-4">{{ title }} </h2>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Customer Master List</li>
+    </ol>
+    <h3>{{ message1 }}</h3>
+    <div class="container">
+
+        <form action="/qcustcdtlist" method="post" name="form1" id="form1">
+            <div class="row">
+                <div class="small mb-1">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Customer</span>
+                            <input type="text" class="form-control" id="icusnum" name="icusnum" placeholder="Select customer">
+                        </div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Last Name</span>
+                            <input type="text" class="form-control" id="ilstnam" name="ilstnam" placeholder="Select last name">&nbsp;
+                        </div>
+                        <div>
+                            <button type="submit" name="search" class="btn btn-sm btn-primary align-left">Search</button>&nbsp;
+                            <a class="btn btn-sm btn-primary" href="/qcustcdtdetail">New</a>
+                        </div>
+                    </div>
+                </div>
+        </form>
+        <table class="table table-striped">
+            <tr>
+                <th>Cusnum</th>
+                <th>Last name</th>
+                <th>Init</th>
+            </tr>
+            {% if results != None %}
+            {% for row in results %}
+            <tr>
+                <!-- Note: IBMi DB2 field names are case sensitive. Usually upper case-->
+                <!--https://stackoverflow.com/questions/24052362/passing-variables-through-url-to-a-flask-app -->
+                <!--Could do parm in URL - <td><a href="/customerdetail/{{row['CUSNUM']}}">{{row['cusnum']}}</a></td> -->
+                <td><a href="/qcustcdtdetail?icusnum={{row['CUSNUM']}}">{{row['LSTNAM']}}</a></td>
+                <td>{{row.LSTNAM}}</td>
+                <td>{{row['INIT']}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </table>
+
+    </div>
+</div>
+{% endblock %}

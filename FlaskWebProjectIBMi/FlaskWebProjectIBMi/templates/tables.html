@@ -1,0 +1,71 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1 class="mt-4">{{ title }}</h1>
+    <div class="card mb-4">
+        <div class="card-header"><i class="fas fa-table mr-1"></i>Customer Master</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Last Name</th>
+                            <th>Init</th>
+                            <th>Street</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zipcode</th>
+                            <th>Credit Limit</th>
+                            <th>Charge Code</th>
+                            <th>Balance Due</th>
+                            <th>Credit Due</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Last Name</th>
+                            <th>Init</th>
+                            <th>Street</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zipcode</th>
+                            <th>Credit Limit</th>
+                            <th>Charge Code</th>
+                            <th>Balance Due</th>
+                            <th>Credit Due</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% if results != None %}
+                        {% for row in results %}
+                        <tr>
+                            <!-- Note: IBMi DB2 field names are case sensitive. Usually upper case-->
+                            <!--https://stackoverflow.com/questions/24052362/passing-variables-through-url-to-a-flask-app -->
+                            <!--Could do parm in URL - <td><a href="/customerdetail/{{row['orguuid']}}">{{row['orguuid']}}</a></td> -->
+                            <td><a href="/qcustcdtdetail?icusnum={{row.CUSNUM}}">{{row.LSTNAM}}</a></td>
+                            <td>{{row.LSTNAM}}</td>
+                            <td>{{row.INIT}}</td>
+                            <td>{{row.STREET}}</td>
+                            <td>{{row.CITY}}</td>
+                            <td>{{row.STATE}}</td>
+                            <td>{{row.ZIPCOD}}</td>
+                            <td>{{row.CDTLMT}}</td>
+                            <td>{{row.CHGCOD}}</td>
+                            <td>{{row.BALDUE}}</td>
+                            <td>{{row.CDTDUE}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
