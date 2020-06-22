@@ -1,6 +1,10 @@
 # FlaskWebProjectIBMi
 Sample Python Flask App for use on IBM i, Windows or Linux. Uses IBM i Access ODBC Driver or SQLite Database.
 
+# Webinar youtube link from Magic session
+
+https://www.youtube.com/watch?v=k8IrBGebfvo&t=122s
+
 # Setting up for development and use from Windows with Visual Studio
 Install Visual Studio 2019
 
