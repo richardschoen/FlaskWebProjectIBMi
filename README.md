@@ -33,22 +33,9 @@ yum install unixODBC'devel
 yum install python3
 ```
 
-Make sure IBM i Access ODBC Driver for PASE is loaded
-Download from IBM i Access Client Solutions site http://www-01.ibm.com/support/docview.wss?uid=isg3T1026805
+Make sure IBM i Access ODBC Driver for PASE is loaded. Instructions on new Yum installer for ODBC driver:
+https://www.seidengroup.com/2022/07/11/using-yum-to-install-or-update-the-ibm-i-odbc-driver/
 
-Upload IBM i Access RPM file to root dir in IFS (where xx is version number of RPM)
-```ibm-iaccess-1.1.0.xx-0.ibmi7.2.ppc64.rpm``` 
-
-Install IBM i Access ODBC Driver
-```
-cd /
-
-PATH=/QOpenSys/pkgs/bin  
-
-export PATH
-
-rpm -i ibm-iaccess-1.1.0.xx-0.ibmi7.2.ppc64.rpm  (xx is ver in zip file)
-```
 
 From IBM i bash shell or QSH, run following commands to clone the web project:
 
